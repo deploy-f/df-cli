@@ -11,7 +11,7 @@ public class InitCommand : ICommand
     [CommandOption("api-url", Description = "set the url to api")]
     public string ApiUrl { get; set; }
 
-    public async ValueTask ExecuteAsync(IConsole console)
+    public ValueTask ExecuteAsync(IConsole console)
     {
         var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         var dfPath = Path.Combine(home, ".df");
@@ -31,5 +31,7 @@ public class InitCommand : ICommand
         File.WriteAllText(confPath, config);
 
         console.Output.WriteLine($"config has been saved to {confPath}");
+
+        return ValueTask.CompletedTask;
     }
 }

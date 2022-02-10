@@ -2,7 +2,7 @@
   "profiles": {
     "Deployf.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "upload /app/test.txt --app-id 7 --file ../../../swagger-codegen.ps1"
+      "commandLineArgs": "exec pwd --app-id 7"
     }
   }
 }

@@ -8,6 +8,8 @@
 	<PackAsTool>true</PackAsTool>
     <ToolCommandName>df</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
+
+	<NoWarn>NU1701</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
