@@ -1,0 +1,8 @@
+bin
+obj
+publish
+pack
+.vs
+.idea
+nupkg
+.config
