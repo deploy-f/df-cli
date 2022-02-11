@@ -1,7 +1,6 @@
 ﻿using CliFx;
 using CliFx.Attributes;
 using CliFx.Infrastructure;
-using System.Net.Http.Headers;
 
 [Command("upload", Description = "uplaoad file to the container")]
 public class UploadFileCommand : ApplicationBaseCommand, ICommand

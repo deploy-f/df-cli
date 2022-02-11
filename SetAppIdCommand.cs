@@ -1,7 +1,6 @@
 ﻿using CliFx;
 using CliFx.Attributes;
 using CliFx.Infrastructure;
-using IO.Swagger.Api;
 
 [Command("set-app-id", Description = "set context to use passed app id")]
 public class SetAppIdCommand : ApplicationBaseCommand, ICommand

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
+	<AssemblyName>df</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
  
@@ -10,12 +11,12 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
 
 	<NoWarn>NU1701</NoWarn>
+
+	<Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CliFx" Version="2.2.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-	<PackageReference Include="RestSharp.Net2" version="1.1.11" />
   </ItemGroup>
 
 </Project>
