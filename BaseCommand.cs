@@ -7,7 +7,7 @@ public abstract class BaseCommand
     public string Token { get; set; }
 
     [CommandOption("api-url", Description = "set the url to api", EnvironmentVariable = "API_URL")]
-    public string ApiUrl { get; set; } = "https://staging.v2.d-f.pw";
+    public string ApiUrl { get; set; } = "https://v2.d-f.pw";
 
     public HttpRequestMessage CreateRequest(HttpMethod method, string query)
     {
