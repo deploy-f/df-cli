@@ -16,15 +16,12 @@ public class UploadFileCommand : ApplicationBaseCommand, ICommand
     {
         using Stream file = console.IsInputRedirected ? console.Input.BaseStream : File.OpenRead(SourceFile);
 
-        var request = new HttpRequestMessage();
-        request.Method = HttpMethod.Put;
-        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", Token);
-        request.RequestUri = new Uri(new Uri(ApiUrl), $"api/application/{AppId}/exec");
+        var request = CreateRequest(HttpMethod.Put, $"api/application/{AppId}/exec");
         var content = new MultipartFormDataContent();
+        request.Content = content;
         content.Add(new StringContent("tee"), "command");
         content.Add(new StringContent(ContainerPath), "command");
         content.Add(new StreamContent(file), "file", "stdin");
-        request.Content = content;
 
         var response = await new HttpClient().SendAsync(request);
 

@@ -1,5 +1,5 @@
 ﻿using CliFx.Attributes;
-using IO.Swagger.Client;
+using System.Net.Http.Headers;
 
 public abstract class BaseCommand
 {
@@ -9,12 +9,12 @@ public abstract class BaseCommand
     [CommandOption("api-url", Description = "set the url to api", EnvironmentVariable = "API_URL")]
     public string ApiUrl { get; set; } = "https://staging.v2.d-f.pw";
 
-    protected T GetApi<T>()
+    public HttpRequestMessage CreateRequest(HttpMethod method, string query)
     {
-        Configuration.DefaultApiClient.RestClient.BaseUrl = ApiUrl;
-        Configuration.ApiKey["Authorization"] = Token;
-        Configuration.ApiKeyPrefix["Authorization"] = "Bearer";
-
-        return (T)typeof(T).GetConstructor(new [] { typeof(ApiClient) }).Invoke(new object[] { null });
+        var request = new HttpRequestMessage();
+        request.Method = method;
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+        request.RequestUri = new Uri(new Uri(ApiUrl), query);
+        return request;
     }
 }

@@ -6,6 +6,7 @@ await InitConfig();
 await new CliApplicationBuilder()
     .AddCommandsFromThisAssembly()
     .SetExecutableName("df")
+    .SetTitle("Deploy-f cli")
     .Build()
     .RunAsync();
 

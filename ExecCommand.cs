@@ -1,8 +1,6 @@
 ﻿using CliFx;
 using CliFx.Attributes;
 using CliFx.Infrastructure;
-using System.Net;
-using System.Net.Http.Headers;
 
 [Command("exec", Description = "exec command in the app container")]
 public class ExecCommand : ApplicationBaseCommand, ICommand
@@ -12,13 +10,11 @@ public class ExecCommand : ApplicationBaseCommand, ICommand
 
     public async ValueTask ExecuteAsync(IConsole console)
     {
-        var request = new HttpRequestMessage();
-        request.Method = HttpMethod.Put;
-        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", Token);
-        request.RequestUri = new Uri(new Uri(ApiUrl), $"api/application/{AppId}/exec");
+        var request = CreateRequest(HttpMethod.Put, $"api/application/{AppId}/exec");
         var content = new MultipartFormDataContent();
+        request.Content = content;
 
-        foreach(var command in ParseCmd(Command))
+        foreach (var command in ParseCmd(Command))
         {
             content.Add(new StringContent(command), "command");
         }
@@ -27,8 +23,6 @@ public class ExecCommand : ApplicationBaseCommand, ICommand
         {
             content.Add(new StreamContent(console.Input.BaseStream), "file", "stdin");
         }
-
-        request.Content = content;
 
         var response = await new HttpClient().SendAsync(request);
 
