@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 
 public abstract class BaseCommand
 {
-    [CommandOption("token", Description = "set auth token", EnvironmentVariable = "TOKEN")]
+    [CommandOption("token", IsRequired = true, Description = "set auth token", EnvironmentVariable = "TOKEN")]
     public string Token { get; set; }
 
     [CommandOption("api-url", Description = "set the url to api", EnvironmentVariable = "API_URL")]
@@ -16,5 +16,12 @@ public abstract class BaseCommand
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         request.RequestUri = new Uri(new Uri(ApiUrl), query);
         return request;
+    }
+
+    public async Task ExecSimple(HttpMethod method, string query)
+    {
+        var request = CreateRequest(method, query);
+        var response = await new HttpClient().SendAsync(request);
+        response.EnsureSuccessStatusCode();
     }
 }
