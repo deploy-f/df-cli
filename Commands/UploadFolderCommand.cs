@@ -5,7 +5,7 @@ using CliFx.Infrastructure;
 using System.Diagnostics;
 using System.IO.Compression;
 
-[Command("upload-folder", Description = "uplaoad folder to the container")]
+[Command("upload-folder", Description = "upload folder to the container")]
 public class UploadFolderCommand : ApplicationBaseCommand, ICommand
 {
     [CommandParameter(0)]

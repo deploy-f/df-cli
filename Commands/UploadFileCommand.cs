@@ -2,7 +2,7 @@
 using CliFx.Attributes;
 using CliFx.Infrastructure;
 
-[Command("upload", Description = "uplaoad file to the container")]
+[Command("upload", Description = "upload file to the container")]
 public class UploadFileCommand : ApplicationBaseCommand, ICommand
 {
     [CommandParameter(0)]
