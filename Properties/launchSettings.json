@@ -2,7 +2,7 @@
   "profiles": {
     "Deployf.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "exec pwd --app-id 7"
+      "commandLineArgs": "exec pwd"
     }
   }
 }
