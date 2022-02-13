@@ -4,12 +4,12 @@
 
 ### 🪟 via powershell
 ```powershell
-> Invoke-WebRequest -Uri https://github.com/deploy-f/df-cli/releases/download/v0.2/df.exe -OutFile df.exe
+> Invoke-WebRequest -Uri https://github.com/deploy-f/df-cli/releases/download/v0.5/deployf.exe -OutFile df.exe
 ```
 
 ### 🐧 on generic linux
 ```bash
-$ curl -LO https://github.com/deploy-f/df-cli/releases/download/v0.2/df
+$ curl -LO https://github.com/deploy-f/df-cli/releases/download/v0.5/deployf
 ```
 
 ### Via nuget on any platform
@@ -22,7 +22,7 @@ dotnet tool install --global Deployf.Cli
 
 ### Set the token
 Go to https://v2.d-f.pw/id/Manage/ListPersonalTokens and create a prsonal token.
-When you have the token, you can save it locally via `df init $TOKEN` command.
+When you have the token, you can save it locally via `deployf init $TOKEN` command.
 Or use the `TOKEN` environment to pass the token. Instead environment variable
 you can use `--token $TOKEN` key.
 
