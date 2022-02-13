@@ -28,6 +28,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="nupkg\**" />
+	  <Compile Remove="publish\**" />
+	  <EmbeddedResource Remove="nupkg\**" />
+	  <EmbeddedResource Remove="publish\**" />
+	  <None Remove="nupkg\**" />
+	  <None Remove="publish\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CliFx" Version="2.2.2" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Spectre.Console" Version="0.43.0" />

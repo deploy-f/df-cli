@@ -13,6 +13,6 @@ public class LogsCommand : ApplicationBaseCommand, ICommand
         var request = CreateRequest(HttpMethod.Get, $"api/application/{AppId}/logs?tail={Tail}");
         var response = await new HttpClient().SendAsync(request);
         response.EnsureSuccessStatusCode();
-        console.Output.Write(await response.Content.ReadAsStringAsync());
+        await response.Content.ReadAsStream().CopyToAsync(console.Output.BaseStream);
     }
 }
