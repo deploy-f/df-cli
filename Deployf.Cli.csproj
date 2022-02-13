@@ -12,7 +12,7 @@
 
 		<NoWarn>NU1701</NoWarn>
 
-		<Version>0.3.1</Version>
+		<Version>0.3.2</Version>
 
 		<Authors>Deploy-f, k0dep, wellon</Authors>
 		<Company>Deploy-f</Company>
