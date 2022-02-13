@@ -15,7 +15,7 @@ $ curl -LO https://github.com/deploy-f/df-cli/releases/download/v0.2/df
 ### Via nuget on any platform
 
 ```bash
-dotnet tool install --global Deployf.Cli
+dotnet tool install --global Deployf.Cli --version 0.3.0
 ```
 
 ## Usage

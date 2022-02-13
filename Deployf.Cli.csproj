@@ -1,23 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-	<AssemblyName>df</AssemblyName>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
- 
-	<PackAsTool>true</PackAsTool>
-    <ToolCommandName>df</ToolCommandName>
-    <PackageOutputPath>./nupkg</PackageOutputPath>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<AssemblyName>df</AssemblyName>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
 
-	<NoWarn>NU1701</NoWarn>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>df</ToolCommandName>
+		<PackageOutputPath>./nupkg</PackageOutputPath>
 
-	<Version>0.1.0</Version>
-  </PropertyGroup>
+		<NoWarn>NU1701</NoWarn>
 
-  <ItemGroup>
-    <PackageReference Include="CliFx" Version="2.2.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
+		<Version>0.3.0</Version>
 
+		<Authors>Deploy-f, k0dep, wellon</Authors>
+		<Company>Deploy-f</Company>
+		<Description>Deploy-f cloud hosting cli</Description>
+		<Copyright>Deploy-f</Copyright>
+		<PackageProjectUrl>https://github.com/deploy-f/df-cli</PackageProjectUrl>
+		<PackageIcon>deployf_logo_sq_128.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/deploy-f/df-cli</RepositoryUrl>
+		<PackageTags>cli;deploy-f;deployf;df</PackageTags>
+		<PackageId>Deployf.Cli</PackageId>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CliFx" Version="2.2.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="deployf_logo_sq_128.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+		<None Update="LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 </Project>
