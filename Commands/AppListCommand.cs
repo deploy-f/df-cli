@@ -2,8 +2,8 @@ using CliFx;
 using CliFx.Attributes;
 using CliFx.Infrastructure;
 using Deployf.Cli.Models;
-using Newtonsoft.Json;
 using Spectre.Console;
+using System.Text.Json;
 
 namespace Deployf.Cli.Commands;
 
@@ -19,7 +19,7 @@ public class AppListCommand : BaseCommand, ICommand
         response.EnsureSuccessStatusCode();
 
         var stringResult = await response.Content.ReadAsStringAsync();
-        var objectResponse = JsonConvert.DeserializeObject<PageDto<ApplicationSummaryDto>>(stringResult);
+        var objectResponse = JsonSerializer.Deserialize<PageDto<ApplicationSummaryDto>>(stringResult, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
         var table = new Table();
         table.Border(TableBorder.MinimalDoubleHead);
