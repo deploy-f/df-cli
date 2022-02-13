@@ -3,6 +3,7 @@ using CliFx.Attributes;
 using CliFx.Infrastructure;
 using Deployf.Cli.Models;
 using Newtonsoft.Json;
+using Spectre.Console;
 
 namespace Deployf.Cli.Commands;
 
@@ -13,26 +14,29 @@ public class AppListCommand : BaseCommand, ICommand
     {
         var request = CreateRequest(HttpMethod.Get, $"api/application?Page=0&Count=10000");
 
-        try
-        {
-            var response = await new HttpClient().SendAsync(request);
+        var response = await new HttpClient().SendAsync(request);
 
-            response.EnsureSuccessStatusCode();
+        response.EnsureSuccessStatusCode();
 
-            var stringResult = await response.Content.ReadAsStringAsync();
-            var objectResponse = JsonConvert.DeserializeObject<PageDto<ApplicationSummaryDto>>(stringResult);
-            if (objectResponse != null)
-            {
-                var appsList = objectResponse.Items.Select(x => new { x.Id, x.Name, x.IsRunned }).ToList();
-                foreach (var app in appsList)
-                {
-                    await console.Output.WriteLineAsync($"Id: {app.Id}, Name: {app.Name}, IsRunning: {app.IsRunned}");
-                }
-            }
-        }
-        catch (Exception e)
+        var stringResult = await response.Content.ReadAsStringAsync();
+        var objectResponse = JsonConvert.DeserializeObject<PageDto<ApplicationSummaryDto>>(stringResult);
+
+        var table = new Table();
+        table.Border(TableBorder.MinimalDoubleHead);
+
+        table.AddColumn("Id");
+        table.AddColumn("Name");
+        table.AddColumn("Status");
+
+        foreach (var app in objectResponse.Items)
         {
-            await console.Output.WriteAsync($"An error occurred: {e}");
+            table.AddRow(
+                new Markup(app.Id.ToString()),
+                new Markup(app.Name),
+                app.IsRunned ? new Markup("[green]Runnging[/]") : new Markup("Stopped")
+            );
         }
+
+        AnsiConsole.Write(table);
     }
 }

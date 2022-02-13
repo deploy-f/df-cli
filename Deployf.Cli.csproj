@@ -2,17 +2,17 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<AssemblyName>df</AssemblyName>
+		<AssemblyName>deployf</AssemblyName>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<PackAsTool>true</PackAsTool>
-		<ToolCommandName>df</ToolCommandName>
+		<ToolCommandName>deployf</ToolCommandName>
 		<PackageOutputPath>./nupkg</PackageOutputPath>
 
 		<NoWarn>NU1701</NoWarn>
 
-		<Version>0.3.0</Version>
+		<Version>0.3.1</Version>
 
 		<Authors>Deploy-f, k0dep, wellon</Authors>
 		<Company>Deploy-f</Company>
@@ -30,6 +30,7 @@
 	<ItemGroup>
 		<PackageReference Include="CliFx" Version="2.2.2" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Spectre.Console" Version="0.43.0" />
 	</ItemGroup>
 
 	<ItemGroup>
